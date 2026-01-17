@@ -10,4 +10,10 @@ describe('Pokedex', () => {
       ),
     ).toBeVisible();
   });
+
+  test('Can navigate to Pokemon page', async ({ page }) => {
+    await page.goto('http://localhost:8080');
+    await page.getByRole('link', { name: 'ivysaur' }).click();
+    await expect(page.getByText('ivysaur')).toBeVisible();
+  });
 });
