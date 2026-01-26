@@ -32,8 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main'}}
     steps:
-      - name: Bump version and push tag
+      - name: Checkout
         uses: actions/checkout@v6
+      - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.75.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
