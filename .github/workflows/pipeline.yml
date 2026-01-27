@@ -30,7 +30,7 @@ jobs:
   tag_release:
     needs: simple_deployment_pipeline
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main'}}
+    if: ${{ github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '#skip') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
