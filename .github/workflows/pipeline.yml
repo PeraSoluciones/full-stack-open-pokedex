@@ -9,6 +9,13 @@ on:
     types: [opened, synchronize]
 
 jobs:
+  testing_stuffs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: git hub context
+
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
@@ -30,7 +37,7 @@ jobs:
   tag_release:
     needs: simple_deployment_pipeline
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main'}}
+    if: ${{ github.ref == 'refs/heads/main' && !contains("#skip", join(github.event.commits.*.message)) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
