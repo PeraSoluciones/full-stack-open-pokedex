@@ -19,7 +19,7 @@ const App = () => {
     data: pokemonList,
     error,
     isLoading,
-  } = useApi('https://pokeapi.co/api/v2/pokemon/?limit=50', mapResults);
+  } = useApi('https://pokeapi.com/api/v2/pokemon/?limit=50', mapResults);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -33,7 +33,7 @@ const App = () => {
 
   if (match && match.params) {
     const pokemonId = pokemonList.find(
-      ({ name }) => name === match.params.name
+      ({ name }) => name === match.params.name,
     ).id;
     previous = pokemonList.find(({ id }) => id === pokemonId - 1);
     next = pokemonList.find(({ id }) => id === pokemonId + 1);
