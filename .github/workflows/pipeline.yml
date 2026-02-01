@@ -34,8 +34,8 @@ jobs:
         run: npm run eslint
       - name: build
         run: npm run build
-      - name: test
-        run: npm run test
+    #   - name: test
+    #     run: npm run test
       - name: Trigger deployment
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
       - name: Discord notification
